@@ -1,6 +1,6 @@
 build/
 out/
-tools/lib/
+*/lib/
 bin/
 *~
 *.class
