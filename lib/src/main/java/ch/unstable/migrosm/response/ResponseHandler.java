@@ -1,6 +1,6 @@
 package ch.unstable.migrosm.response;
 
-import ch.unstable.migrosm.Market;
+import ch.unstable.migrosm.model.Market;
 
 import java.io.InputStream;
 import java.util.List;

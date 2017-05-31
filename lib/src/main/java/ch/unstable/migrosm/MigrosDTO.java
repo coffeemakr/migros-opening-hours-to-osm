@@ -1,5 +1,8 @@
 package ch.unstable.migrosm;
 
+import ch.unstable.migrosm.model.Market;
+import ch.unstable.migrosm.model.MarketTypes;
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.List;

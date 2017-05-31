@@ -1,9 +1,9 @@
 package ch.unstable.migrosm.tools;
 
 import ch.unstable.migrosm.ApacheMigrosDTO;
-import ch.unstable.migrosm.Market;
-import ch.unstable.migrosm.MarketTypes;
 import ch.unstable.migrosm.MigrosDTO;
+import ch.unstable.migrosm.model.Market;
+import ch.unstable.migrosm.model.MarketTypes;
 import ch.unstable.migrosm.response.GsonResponseHandler;
 
 import java.io.IOException;

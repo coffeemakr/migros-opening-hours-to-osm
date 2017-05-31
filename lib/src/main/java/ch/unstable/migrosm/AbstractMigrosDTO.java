@@ -1,9 +1,13 @@
 package ch.unstable.migrosm;
 
+import ch.unstable.migrosm.model.Market;
+import ch.unstable.migrosm.model.MarketTypes;
 import ch.unstable.migrosm.response.ResponseHandler;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 
@@ -12,22 +16,28 @@ import java.util.*;
  */
 public abstract class AbstractMigrosDTO implements MigrosDTO {
     private static final String MARKET_URL = "widgets/stores";
-    private final URL baseURL;
-    private final URL marketURL;
-    private final ResponseHandler deserializer;
-    private List<Header> marketHeaders;
+    protected final URL baseURL;
+    protected final URI marketURI;
+    protected final ResponseHandler responseHandler;
+    private final List<Header> marketHeaders;
+    private final String key;
 
-    public AbstractMigrosDTO(URL baseURL, ResponseHandler deserializer) {
-        this.baseURL = baseURL;
-        this.deserializer = deserializer;
+    protected AbstractMigrosDTO(Builder builder) {
+        this.baseURL = Objects.requireNonNull(builder.baseURL, "baseURL");
+        this.responseHandler = Objects.requireNonNull(builder.responseHandler, "responseHandler");
+        this.key = Objects.requireNonNull(builder.key, "key");
         try {
-            this.marketURL = new URL(baseURL, MARKET_URL);
-        } catch (MalformedURLException e) {
+            this.marketURI = new URL(baseURL, MARKET_URL).toURI();
+        } catch (URISyntaxException | MalformedURLException e) {
             throw new IllegalArgumentException("BaseURL can't be combined", e);
         }
         ArrayList<Header> marketHeaders = new ArrayList<>();
         marketHeaders.add(new Header("Origin", "https://filialen.migros.ch"));
         this.marketHeaders = Collections.unmodifiableList(marketHeaders);
+    }
+
+    public String getKey() {
+        return key;
     }
 
     @Override
@@ -37,18 +47,6 @@ public abstract class AbstractMigrosDTO implements MigrosDTO {
     }
 
     abstract List<Market> getMarkets(Collection<MarketTypes> types, Collection<Header> headers) throws IOException;
-
-    public URL getMarketURL() {
-        return this.marketURL;
-    }
-
-    public URL getBaseURL() {
-        return baseURL;
-    }
-
-    public ResponseHandler getDeserializer() {
-        return deserializer;
-    }
 
     public List<Header> getMarketHeaders() {
         return marketHeaders;

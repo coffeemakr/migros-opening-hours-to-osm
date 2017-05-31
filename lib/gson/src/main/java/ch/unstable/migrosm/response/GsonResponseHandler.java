@@ -1,7 +1,11 @@
 package ch.unstable.migrosm.response;
 
-import ch.unstable.migrosm.Market;
+import ch.unstable.migrosm.model.Market;
+import ch.unstable.migrosm.model.MarketTypes;
+import ch.unstable.migrosm.response.gson.MarketTypeDeserializer;
+import ch.unstable.migrosm.response.gson.MarketTypeSerializer;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
@@ -22,7 +26,10 @@ public class GsonResponseHandler implements ResponseHandler {
     private final Gson gson;
 
     public GsonResponseHandler() {
-        gson = new Gson();
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(MarketTypes.class, new MarketTypeDeserializer());
+        gsonBuilder.registerTypeAdapter(MarketTypes.class, new MarketTypeSerializer());
+        gson = gsonBuilder.create();
     }
 
     @Override
