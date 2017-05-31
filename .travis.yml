@@ -7,8 +7,8 @@ dist: trusty
 
 script:
   - ./gradlew check
-  - ./gradlew assembleTar
-  - ./gradlew assembleZip
+  - ./gradlew distTar
+  - ./gradlew distZip
 
 deploy:
   provider: releases
