@@ -4,8 +4,8 @@ package ch.unstable.migrosm.model;
  * Created on 31.05.17.
  */
 public class Coordinates {
-    public float lot;
-    public float lat;
+    public double lon;
+    public double lat;
 
     public Coordinates() {
 
@@ -14,7 +14,7 @@ public class Coordinates {
     @Override
     public String toString() {
         return "Coordinates{" +
-                "lot=" + lot +
+                "lot=" + lon +
                 ", lat=" + lat +
                 '}';
     }

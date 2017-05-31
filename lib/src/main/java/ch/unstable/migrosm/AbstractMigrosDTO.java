@@ -102,7 +102,7 @@ public abstract class AbstractMigrosDTO implements MigrosDTO {
         public abstract T build();
 
         public Builder<T> setKey(String key) {
-            this.key = Objects.requireNonNull(key);
+            this.key = Objects.requireNonNull(key, "key");
             return this;
         }
     }

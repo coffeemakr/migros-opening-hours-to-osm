@@ -26,10 +26,14 @@ public class GsonResponseHandler implements ResponseHandler {
     private final Gson gson;
 
     public GsonResponseHandler() {
+        gson = createGson();
+    }
+
+    public static Gson createGson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(MarketTypes.class, new MarketTypeDeserializer());
         gsonBuilder.registerTypeAdapter(MarketTypes.class, new MarketTypeSerializer());
-        gson = gsonBuilder.create();
+        return gsonBuilder.create();
     }
 
     @Override
