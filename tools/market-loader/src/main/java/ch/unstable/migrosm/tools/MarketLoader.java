@@ -49,23 +49,17 @@ public class MarketLoader {
         LOGGER.debug("Using log level " + level.name());
     }
 
-    private static  <E extends Enum<E>> List<String> toLowercase(Class<E> type) {
-        E[] constants = type.getEnumConstants();
-        List<String> names = new ArrayList<>(constants.length);
-        for(E value: constants) {
-            names.add(value.name().toLowerCase());
-        }
-        return names;
-    }
-
     private static MarketListWriter getMarketListWriter(OutputFormat outputFormat, OutputStream outputStream) {
         MarketListWriter marketListWriter;
         switch (outputFormat) {
             case TEXT:
-                marketListWriter = new TextMarketListWriter(outputStream);
+                marketListWriter = new TextMarketListWriter();
                 break;
             case JSON:
-                marketListWriter = new JSONMarketListWriter(outputStream);
+                marketListWriter = new JSONMarketListWriter();
+                break;
+            case GEOJSON:
+                marketListWriter = new GeoJsonMarketListWriter();
                 break;
             default:
                 throw new IllegalArgumentException("Unknown Format: " + outputFormat);
@@ -137,11 +131,10 @@ public class MarketLoader {
 
         List<Market> markets = migrosDTO.getMarkets(arguments.getList(ARG_TYPE));
         LOGGER.debug("Loaded " + markets.size() + " markets.");
-        marketListWriter.writeMarketList(markets);
-        marketListWriter.flush();
+        marketListWriter.writeMarketList(markets, System.out);
     }
 
     private enum OutputFormat {
-        TEXT, JSON
+        TEXT, JSON, GEOJSON
     }
 }

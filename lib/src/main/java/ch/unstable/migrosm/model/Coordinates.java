@@ -18,4 +18,12 @@ public class Coordinates {
                 ", lat=" + lat +
                 '}';
     }
+
+    public double getLongitude() {
+        return lon;
+    }
+
+    public double getLatitude() {
+        return lat;
+    }
 }

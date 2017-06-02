@@ -9,18 +9,15 @@ import java.io.Writer;
 import java.util.List;
 
 
-public class TextMarketListWriter extends MarketListWriter{
-
-    public TextMarketListWriter(OutputStream outputStream) {
-        super(outputStream);
-    }
+public class TextMarketListWriter implements MarketListWriter{
 
     @Override
-    public void writeMarketList(List<Market> marketList) throws IOException {
+    public void writeMarketList(List<Market> marketList, OutputStream outputStream) throws IOException {
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
         for(Market market: marketList) {
-            append(market.toString());
-            append("\n");
+            outputStreamWriter.append(market.toString());
+            outputStreamWriter.append("\n");
         }
-        flush();
+        outputStreamWriter.flush();
     }
 }

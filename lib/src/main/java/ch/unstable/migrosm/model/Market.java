@@ -15,6 +15,30 @@ public class Market {
         // Empty constructor for gson
     }
 
+    public Market(String name, int id, Location location, String phone, MarketTypes type) {
+        this.name = name;
+        this.id = id;
+        this.location = location;
+        this.phone = phone;
+        this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public MarketTypes getType() {
+        return type;
+    }
+
     @Override
     public String toString() {
         return "Market{" +
@@ -25,5 +49,17 @@ public class Market {
                 ", slug='" + slug + '\'' +
                 ", type='" + type + '\'' +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }

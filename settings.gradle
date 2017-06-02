@@ -1,4 +1,3 @@
 rootProject.name = 'migrosm'
 include 'lib', 'tools', 'lib:gson', 'lib:apache'
 include 'tools:market-loader'
-
