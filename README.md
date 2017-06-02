@@ -10,7 +10,7 @@ The market loader is a command line tool to load markets from the API and print 
 
 ### Installation
 
-Download the current version from [Github](https://github.com/coffeemakr/migrosm/releases) and extract it.
+Download the [latest release](https://github.com/coffeemakr/migrosm/releases/latest) and extract it.
 
 ### Example
 
