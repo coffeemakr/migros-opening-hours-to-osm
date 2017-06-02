@@ -16,8 +16,8 @@ deploy:
     secure: P7tHWB7gDVj1A6xseyj/gqw0jKI8+oAwfD+Q+adB5OQPIQXwE0BeQUe2+82VUqw5017I+lijTUz4rJ8lx6Z/WpIrAJSTO7SENEY6bYmJl4I5G5c20YT0veqGEOb+vghESk3maf/vBIuqZqNdK38PtpCxZ85UL/GSEviLguKZmlWbe8RlH0TPfxXQGlEF3rnP2Jq+QSOTB2rUNNxYmDzTZ2E3m4YfNEJwdCVbaPerhQMcI84iBTw4Wsgw+d6vv8CLYPeV2a8YCJU0ZSSDP//k0iIvxrTPPEucAFwrKgiyMarKXY8yAJkTM5369U8Im8Fy8caRWhGvb6lz4ofaXKT7PbwBs7fSm79wj0jiEqnDXvBP+7sRhCJLf1U8zG8Zm4x1azVFUmHkU7wOeHS9vcuPw89M8JjiJmmssONg6UrBjjMhsmi0kKpi9ljrqZ9z85H15RpbO8cJ0BwHTUwZbsu3iIQ8BsXD4spGlhkSna7iMHdRjmmN8AYdbRxLFodgRvp/hBDrCHzQv5H0uP/6i4WP7BAG79u4HtCVRsXCqgCld/EKq7cHwfoh0QEmGg7RNHrJR/T/6k22VbK4tjlu2Q0H1WImeahiifbgokxeyliQxV1bukJHntGQ//MI34tk+BNKvy9TdrJ0FZ+aDyPZEW0/T04k5oi4BsxVdLHmNLGJR40=
   skip_cleanup: true
   file:
-    - tools/market-loader/build/distributions/migrosm-market-loader.tar
-    - tools/market-loader/build/distributions/migrosm-market-loader.zip
+    - tools/market-loader/build/distributions/market-loader.tar
+    - tools/market-loader/build/distributions/market-loader.zip
   on:
     repo: coffeemakr/migrosm
     tags: true
