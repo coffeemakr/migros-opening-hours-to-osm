@@ -8,16 +8,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created on 31.05.17.
+ * Convert a market to a OSM-Node.
  */
 public class MarketOsmCreator implements OsmCreator<Market> {
 
-    public void setStreetAndNumber(OsmNode node, String streetAndNumber) {
+    private void setStreetAndNumber(OsmNode node, String streetAndNumber) {
         Pattern streetAndNumberPattern = Pattern.compile("^(\\S+)\\s+(\\d+)$");
         Matcher matcher = streetAndNumberPattern.matcher(streetAndNumber);
         if(matcher.matches()) {
             node.setTag(TagName.ADDRESS_STREET.getId(), matcher.group(1));
-            node.setTag(TagName.ADDRESS_HOUSENUMBER.getId(), matcher.group(1));
+            node.setTag(TagName.ADDRESS_HOUSENUMBER.getId(), matcher.group(2));
         } else {
             node.setTag(TagName.ADDRESS_STREET.getId(), streetAndNumber);
         }
